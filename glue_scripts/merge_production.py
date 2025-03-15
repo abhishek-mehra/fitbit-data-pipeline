@@ -17,7 +17,14 @@ def execute_merges(redshift_conn):
                 raise
 
 def main():
-    args = getResolvedOptions(sys.argv, ['JOB_NAME'])
+    args = getResolvedOptions(sys.argv, [
+        'JOB_NAME',
+        'REDSHIFT_DATABASE',
+        'REDSHIFT_USER',
+        'REDSHIFT_PASSWORD',
+        'REDSHIFT_HOST',
+        'REDSHIFT_PORT'
+    ])
     
     sc = SparkContext()
     glueContext = GlueContext(sc)
@@ -26,11 +33,11 @@ def main():
     
     # Execute merges
     with psycopg2.connect(
-        dbname='your_database',
-        user='your_user',
-        password='your_password',
-        host='your_host',
-        port='5439'
+        dbname=args['REDSHIFT_DATABASE'],
+        user=args['REDSHIFT_USER'],
+        password=args['REDSHIFT_PASSWORD'],
+        host=args['REDSHIFT_HOST'],
+        port=args['REDSHIFT_PORT']
     ) as conn:
         execute_merges(conn)
         conn.commit()
