@@ -114,10 +114,10 @@ For local development, create a `.env` file:
 
 ```env
 # S3 Configuration
-FITBIT_SOURCE_BUCKET=umms-research-radx-image-processing
-FITBIT_SOURCE_PREFIX=Onboarding/RADx/RURAL/fitbit_intraday
-FITBIT_DEST_BUCKET=umasschan-plum-data-lab
-FITBIT_DEST_PREFIX=Rural/intraday
+FITBIT_SOURCE_BUCKET="bucket name"
+FITBIT_SOURCE_PREFIX="data source"
+FITBIT_DEST_BUCKET="destination bucket"
+FITBIT_DEST_PREFIX="dest prefix"
 GLUE_SCRIPTS_BUCKET=your-glue-scripts-bucket
 
 # Redshift Configuration
